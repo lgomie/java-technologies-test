@@ -3,9 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/luiz/workspace/netbeans-workspace/AlmoxarifadoWeb/src/java/br/recife/edu/ifpe/controller/servlets/FuncionarioServlet.java</file>
-            <file>file:/home/luiz/workspace/netbeans-workspace/AlmoxarifadoWeb/web/WEB-INF/web.xml</file>
-            <file>file:/home/luiz/workspace/netbeans-workspace/AlmoxarifadoWeb/web/cadastrofuncionario.html</file>
+            <file>file:/home/luiz/workspace/netbeans-workspace/AlmoxarifadoWeb/web/cadastrofuncionario.jsp</file>
+            <file>file:/home/luiz/workspace/netbeans-workspace/AlmoxarifadoWeb/src/java/br/recife/edu/ifpe/controller/servlets/produto/NewProdutoServlet.java</file>
+            <file>file:/home/luiz/workspace/netbeans-workspace/AlmoxarifadoWeb/web/visualizafuncionario.jsp</file>
+            <file>file:/home/luiz/workspace/netbeans-workspace/AlmoxarifadoWeb/src/java/br/recife/edu/ifpe/controller/servlets/funcionario/NewFuncionarioServlet.java</file>
+            <file>file:/home/luiz/workspace/netbeans-workspace/AlmoxarifadoWeb/web/funcionarios.jsp</file>
         </group>
     </open-files>
 </project-private>
