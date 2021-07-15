@@ -4,10 +4,13 @@
    Author     : luiz
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="br.recife.edu.ifpe.model.repositorios.RepositorioFuncionario"%>
 <%@page import="br.recife.edu.ifpe.model.classes.Funcionario"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="ifpe" uri="br.recife.edu.ifpe.customtags"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,6 +18,7 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <ifpe:carrega/>
         <h1>Funcionários cadastrados</h1>
         <%
             String mensagem = (String) session.getAttribute("msg");
@@ -41,31 +45,20 @@
             <button onclick="modal2Close()">Fechar</button>
         </div>
 
-            <%            List<Funcionario> funcionarios = RepositorioFuncionario.getCurrentInstance().readAll();
-        %>
-
         <table border="1">
             <tr>
                 <th>Código</th><th>Nome</th><th>Departamento</th><th>Operações</th>
             </tr>
-
-            <%
-                for (Funcionario f : funcionarios) {
-            %>
-            <tr>
-                <td><%= f.getCodigo()%></td>
-                <td><%= f.getNome()%></td>
-                <td><%= f.getDepartamento()%></td>
-                <td><a href="NewFuncionarioServlet?codigo=<%= f.getCodigo()%>&redirect=visualiza">Visualizar</a>
-                    <a href="NewFuncionarioServlet?codigo=<%= f.getCodigo()%>&redirect=atualiza">Atualizar</a>
-                    <a href="#" onclick="deleteFuncionario(<%= f.getCodigo() %>)">Deletar</a></td>
-
-            </tr>
-            <%
-                }
-            %>
-
-
+            <c:forEach var="fAux" items="${funcionarios}">
+                <tr>
+                    <td>${fAux.codigo}</td>
+                    <td>${fAux.nome}</td>
+                    <td>${fAux.departamento}</td>
+                    <td><a href="NewFuncionarioServlet?codigo=${fAux.codigo}&redirect=visualiza">Visualizar</a>
+                        <a href="NewFuncionarioServlet?codigo=${fAux.codigo}&redirect=atualiza">Atualizar</a>
+                        <a href="#" onclick="deleteFuncionario(${fAux.codigo})">Deletar</a></td>
+                </tr>
+            </c:forEach>
         </table>
 
         <script>
@@ -104,12 +97,14 @@
             function modal2Close() {
                 document.body.removeChild(modal2);
             }
-            
-            function deleteFuncionario(codigo) {fetch("NewFuncionarioServlet?codigo=" + codigo, {method:'delete'})
-                        .then(function(response){
+
+            function deleteFuncionario(codigo) {
+                fetch("NewFuncionarioServlet?codigo=" + codigo, {method: 'delete'})
+                        .then(function (response) {
                             location.reload();
-                });
-            };
+                        });
+            }
+            ;
 
 
         </script>
